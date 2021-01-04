@@ -22,11 +22,12 @@ end
 #  number              :integer
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
-#  bs_request_id       :integer          not null, indexed
-#  staging_workflow_id :integer          not null, indexed
+#  bs_request_id       :integer          not null, indexed, indexed => [staging_workflow_id]
+#  staging_workflow_id :integer          not null, indexed, indexed => [bs_request_id]
 #
 # Indexes
 #
 #  index_staging_request_exclusions_on_bs_request_id        (bs_request_id)
 #  index_staging_request_exclusions_on_staging_workflow_id  (staging_workflow_id)
+#  unique_bs_request_exclusion_per_staging_workflow         (bs_request_id,staging_workflow_id) UNIQUE
 #

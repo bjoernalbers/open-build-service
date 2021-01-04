@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_10_165142) do
+ActiveRecord::Schema.define(version: 2021_01_04_131551) do
 
   create_table "architectures", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "name", null: false, collation: "utf8_general_ci"
@@ -936,6 +936,7 @@ ActiveRecord::Schema.define(version: 2020_12_10_165142) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "number"
+    t.index ["bs_request_id", "staging_workflow_id"], name: "unique_bs_request_exclusion_per_staging_workflow", unique: true
     t.index ["bs_request_id"], name: "index_staging_request_exclusions_on_bs_request_id"
     t.index ["staging_workflow_id"], name: "index_staging_request_exclusions_on_staging_workflow_id"
   end
